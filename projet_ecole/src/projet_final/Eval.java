@@ -31,6 +31,7 @@ package projet_final;
         this.appreciation = app;
         this.id = id;
     }
+
      public double getnote()
      {
          return note;

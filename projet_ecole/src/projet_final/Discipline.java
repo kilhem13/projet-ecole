@@ -49,6 +49,7 @@ public class Discipline {
         double moy=0;
         for(int i=0;i<note_liste.size();i++)
         {
+
             moy+=(note_liste.get(i).getnote())*note_liste.get(i).getcoef();
             coeff+=note_liste.get(i).getcoef();
         }
@@ -59,4 +60,5 @@ public class Discipline {
      {
          return coef;
      }
+
 }
