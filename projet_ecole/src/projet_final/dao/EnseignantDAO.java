@@ -30,12 +30,29 @@ public class EnseignantDAO extends DAO<Enseignant> {
     @Override
     public boolean create(Enseignant obj) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-           String req = "INSERT INTO `discipline` (`ID`, `NOM`, PRENOM, TYPE) VALUES (NULL, '"+obj.get_nom()+"', '"+ obj.get_prenom() +"', 2);";
+           String req = "INSERT INTO `personne` (`ID`, `NOM`, PRENOM, TYPE) VALUES (NULL, '"+obj.get_nom()+"', '"+ obj.get_prenom() +"', 2);";
         try {
             connect.executeUpdate(req);
-            Scanner myObj = new Scanner(System.in);
-            String matiere = myObj.nextLine();
-            String req2 = ""; 
+            Scanner sc_classe = new Scanner(System.in);
+            String classe = sc_classe.nextLine();
+            String req3 = "SELECT ID FROM classe WHERE nom = '"+classe+"'";
+            ArrayList<String> result = connect.remplirChampsRequete(req3);
+            String[] res = result.get(0).split(",");
+            System.out.println(res[0]);
+            
+            String req4 = "SELECT ID FROM personne WHERE nom = '"+obj.get_nom()+"'";
+            ArrayList<String> result2 = connect.remplirChampsRequete(req4);
+            
+            String[] res2 = result2.get(0).split(",");
+            System.out.println(res2[0]);
+            
+            String matiere = obj.get_discipline();
+            String req5 = "SELECT ID FROM discipline WHERE nom = '"+obj.get_discipline()+"'";
+            ArrayList<String> result3 = connect.remplirChampsRequete(req5);
+             String[] res5 = result3.get(0).split(",");
+            
+            String req2 = "INSERT INTO enseignement(`ID`, `CLASSE_ID`, DISCIPLINE_ID, PERSONNE_ID) VALUES(NULL,"+res[0]+", "+res5[0]+", "+res2[0]+")"; 
+            connect.executeUpdate(req2);
             System.out.println("Inserted");
             return true;
         } catch (SQLException ex) {
