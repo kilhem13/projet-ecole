@@ -5,6 +5,8 @@
  */
 package projet_final.dao;
 
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,6 +15,7 @@ import java.util.logging.Logger;
 import projet_final.Connexion;
 import projet_final.Discipline;
 import projet_final.Enseignant;
+import projet_final.Eval;
 
 /**
  *
@@ -113,20 +116,29 @@ public class DisciplineDAO extends DAO<Discipline> {
         }
        return dis;
     }
-    public static void load_discipline(Connexion connect)
+     public static void load_eval(int id)
     {
-        try
-        {
-            ArrayList<String> result;
+        try {
+           ArrayList<String> result;
+           result = connect.remplirChampsRequete("SELECT * FROM eval WHERE id = "+ id);
+           String[] res = result.get(0).split(",");
+           for(int i = 0; i<res.length; ++i)
+            System.out.println(res[i]);
+           Eval e = new Eval( parseInt(res[0]), parseDouble(res[2]), res[1]);
            
-           result = connect.remplirChampsRequete("SELECT * FROM trimestre Where 1");
-            System.out.println(result.size());
-        }
-        catch(SQLException ex)
-        {
-            Logger.getLogger(DisciplineDAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("null");
+           
+           /*     if(result.first()){
+        eval = new Eval(id, result.getString("cls_nom"));
+
+        result = this.connect.createStatement().executeQuery(
+          "SELECT prof_id, prof_nom, prof_prenom from professeur " +
+          "INNER JOIN j_mat_prof ON prof_id = jmp_prof_k " +
+          "INNER JOIN j_cls_jmp ON jmp_id = jcm_jmp_k AND jcm_cls_k = " + id
+        );*/
+       } catch (SQLException ex) {
+            Logger.getLogger(EvalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     
 }
