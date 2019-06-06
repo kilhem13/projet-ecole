@@ -21,5 +21,9 @@ public class Eleve extends Personne{
         super(id, nom, prenom, type);
         
     }
+    public Eleve()
+    {
+        
+    }
 
 }

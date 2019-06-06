@@ -9,6 +9,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import projet_final.Connexion;
@@ -28,7 +29,20 @@ public class EnseignantDAO extends DAO<Enseignant> {
 
     @Override
     public boolean create(Enseignant obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           String req = "INSERT INTO `discipline` (`ID`, `NOM`, PRENOM, TYPE) VALUES (NULL, '"+obj.get_nom()+"', '"+ obj.get_prenom() +"', 2);";
+        try {
+            connect.executeUpdate(req);
+            Scanner myObj = new Scanner(System.in);
+            String matiere = myObj.nextLine();
+            String req2 = ""; 
+            System.out.println("Inserted");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DisciplineDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Discipline not found");
+            return false;
+        } 
     }
 
     @Override
@@ -38,7 +52,8 @@ public class EnseignantDAO extends DAO<Enseignant> {
 
     @Override
     public boolean update(Enseignant obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override

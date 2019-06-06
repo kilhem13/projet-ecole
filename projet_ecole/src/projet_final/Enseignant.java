@@ -41,8 +41,5 @@ public class Enseignant extends Personne {
     {
             liste_enseignant.add(e);
     }
-     public String get_nom()
-     {
-         return this.nom;
-    }
+    
 }

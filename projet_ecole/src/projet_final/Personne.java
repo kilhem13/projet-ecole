@@ -59,9 +59,28 @@ public abstract class Personne {
     {
             liste_enseignant.add(e);
     }
-    public void add_el_to_array(Eleve e)
+    public static void add_el_to_array(Eleve e)
     {
             liste_eleve.add(e);
     }
+    public int get_id()
+    {
+        return this.id;
+    }
+    public String get_nom()
+    {
+        return this.nom;
+    }
+    public String get_prenom()
+    {
+        return this.prenom;
+    }
+    
+    public int get_type()
+    {
+        return this.type;
+    }
+    
+    
     
 }
