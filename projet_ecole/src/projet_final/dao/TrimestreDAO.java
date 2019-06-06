@@ -43,30 +43,20 @@ public class TrimestreDAO extends DAO<Trimestre>{
     public Trimestre find(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public static void load_Trimestre(Connexion connect)
+    public static void load_Bulletin(Connexion connect)
     {
         try
         {
-           ArrayList<String> result;
+            ArrayList<String> result;
            
            result = connect.remplirChampsRequete("SELECT * FROM trimestre Where 1");
             System.out.println(result.size());
-           for(int j  = 0; j<result.size(); ++j)
-           {
-            String[] res = result.get(j).split(",");
-            int id = parseInt(res[0]);
-            String nom = res[1];
-           
-            Trimestre t = new Trimestre(id, nom);
-            //System.out.println(res[1]);
-            Ecole.add_ec_to_array(e);
-           }
         }
         catch(SQLException ex)
         {
-            Logger.getLogger(TrimestreDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BulletinDAO.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("null");
         }
     }
+    
 }

@@ -41,7 +41,7 @@ public class BulletinDAO extends DAO<Bulletin>{
     public Bulletin find(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public static void load_discipline(Connexion connect)
     {
         try
@@ -57,4 +57,5 @@ public class BulletinDAO extends DAO<Bulletin>{
             System.out.println("null");
         }
     }
+    
 }
