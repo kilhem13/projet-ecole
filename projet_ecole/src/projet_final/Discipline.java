@@ -43,4 +43,15 @@ public class Discipline {
         return this.nom;
     }
     
+    public double moyenne()
+    {
+        double coeff=0;
+        double moy=0;
+        for(int i=0;i<note_liste.size();i++)
+        {
+            moy+=(note_liste.get(i).getnote())*note_liste.get(i).getcoef();
+            coeff+=note_liste.get(i).getcoef();
+        }
+        return moy/coeff;
+    }
 }
