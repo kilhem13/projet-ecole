@@ -10,68 +10,63 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import projet_final.Classe;
 import projet_final.Connexion;
 import projet_final.Ecole;
-import projet_final.Personne;
+import projet_final.Trimestre;
 
 /**
  *
- * @author HP
+ * @author sarto
  */
-public class EcoleDAO extends DAO<Ecole> {
+public class TrimestreDAO extends DAO<Trimestre>{
 
-    public EcoleDAO(Connexion conn) {
+    public TrimestreDAO(Connexion conn) {
         super(conn);
     }
 
     @Override
-    public boolean create(Ecole obj) {
+    public boolean create(Trimestre obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean delete(Ecole obj) {
+    public boolean delete(Trimestre obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean update(Ecole obj) {
+    public boolean update(Trimestre obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Ecole find(int id) {
+    public Trimestre find(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public static void load_Ecole (Connexion connect) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-             //  Enseignant ens = new Enseignant();
-       try {
-          ArrayList<String> result;
+    public static void load_Trimestre(Connexion connect)
+    {
+        try
+        {
+           ArrayList<String> result;
            
-           result = connect.remplirChampsRequete("SELECT * FROM ecole Where 1");
-           System.out.println(result.size());
+           result = connect.remplirChampsRequete("SELECT * FROM trimestre Where 1");
+            System.out.println(result.size());
            for(int j  = 0; j<result.size(); ++j)
            {
             String[] res = result.get(j).split(",");
             int id = parseInt(res[0]);
             String nom = res[1];
            
-            Ecole e = new Ecole(id, nom);
+            Trimestre t = new Trimestre(id, nom);
             //System.out.println(res[1]);
             Ecole.add_ec_to_array(e);
-            
            }
-           
-       } catch (SQLException ex) {
-            Logger.getLogger(EcoleDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch(SQLException ex)
+        {
+            Logger.getLogger(TrimestreDAO.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("null");
         }
-       //ens = new Enseignant();
-     
-    
     }
-    
 }
