@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projet_ecole;
+package projet_final;
 
 import java.util.ArrayList;
+import projet_final.*;
 
 /**
  *

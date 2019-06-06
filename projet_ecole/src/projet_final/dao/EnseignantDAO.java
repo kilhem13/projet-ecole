@@ -72,14 +72,25 @@ public class EnseignantDAO extends DAO<Enseignant> {
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
              //  Enseignant ens = new Enseignant();
        try {
-           ArrayList<String> result;
+          ArrayList<String> result;
            
            result = connect.remplirChampsRequete("SELECT * FROM Personne Where Type = 2");
-           String[] res = result.get(0).split(",");
-           for(int i = 0; i<res.length; ++i)
-            System.out.println(res[i]);
-       //    Enseignant e = new Enseignant(res[0]);
            
+           for(int j  = 0; j<result.size(); ++j)
+           {
+            String[] res = result.get(j).split(",");
+            for(int i = 0; i<res.length; ++i)
+             System.out.println(res[i]);
+            int id = parseInt(res[0]);
+            String prenom = res[1];
+            String nom = res[2];
+            String req = "SELECT nom FROM `discipline` WHERE `ID` = (SELECT DISCIPLINE_ID FROM enseignement WHERE PERSONNE_ID ="+ id +")";
+            result = connect.remplirChampsRequete(req);
+            
+            res = result.get(j).split(",");
+            for(int i = 0; i<res.length; ++i)
+             System.out.println(res[i]);
+           }
            
            /*     if(result.first()){
         ens = new Enseignant(id, result.getString("cls_nom"));
