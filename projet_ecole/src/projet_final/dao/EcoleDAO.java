@@ -73,5 +73,24 @@ public class EcoleDAO extends DAO<Ecole> {
      
     
     }
+    public static void load_Classe(Connexion connect, int id) throws SQLException
+    {
+        for(int i = 0; i<Ecole.get_ecole_list().size(); ++i)
+        {
+        String req = "SELECT * FROM classe WHERE ecole_id = "+ Ecole.get_ecole_list().get(i).get_id();
+        ArrayList<String> result;
+        result = connect.remplirChampsRequete(req);
+        System.out.println(result.size());
+        for(int j  = 0; j<result.size(); ++j)
+           {
+            String[] res = result.get(j).split(",");
+            System.out.println(res[0]);
+            Classe c = new Classe(parseInt(res[0]), res[1], res[3]);
+            Ecole.get_ecole_list().get(i).add_class(c);
+           // int id = parseInt(res[0]);
+           }
+        }
+        
+    }
     
 }

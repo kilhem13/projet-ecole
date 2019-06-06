@@ -26,4 +26,16 @@ public class Ecole {
     {
         ecole_list.add(e);
     }
+    public int get_id()
+    {
+        return this.id;
+    }
+    public static ArrayList<Ecole>get_ecole_list()
+    {
+        return ecole_list;
+    }
+    public void add_class(Classe c)
+    {
+        classe_liste.add(c);
+    }
 }

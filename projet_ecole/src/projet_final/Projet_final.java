@@ -27,6 +27,19 @@ public class Projet_final {
         
         //DAO<Ecole> ecdao = new EcoleDAO(con);
         EcoleDAO.load_Ecole(con);
+        int id =  Ecole.get_ecole_list().get(0).get_id();
+        
+        DAO<Ecole> ecdao = new EcoleDAO(con);
+        EcoleDAO.load_Classe(con, 1);
+        
+        for(int i = 0 ; i < Ecole.get_ecole_list().size(); ++i)
+        {
+            int j = 0;
+            while(System.out.println(Ecole.get_ecole_list().get(j))
+            System.out.println(Ecole.get_ecole_list().get(0).get_id());
+        }
+        
+        
         //ensdao.create(e);
         
         //EleveDAO.load_Eleve(con);
