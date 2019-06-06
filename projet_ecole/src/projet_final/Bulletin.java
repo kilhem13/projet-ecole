@@ -14,5 +14,19 @@ import java.util.ArrayList;
 public class Bulletin {
     private int id;
     private String appreciation;
-    private ArrayList<Discipline> displine_liste;
+    private ArrayList<Discipline> discipline_liste;
+    
+    
+    public double moyenne()
+    {
+        double coeff=0;
+        double moy=0;
+        for(int i=0;i<discipline_liste.size();i++)
+        {
+            moy+=(discipline_liste.get(i).moyenne())*discipline_liste.get(i).getcoef();
+            coeff+=discipline_liste.get(i).getcoef();
+        }
+        return moy/coeff;
+    }
 }
+

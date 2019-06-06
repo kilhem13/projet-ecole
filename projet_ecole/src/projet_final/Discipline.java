@@ -54,4 +54,9 @@ public class Discipline {
         }
         return moy/coeff;
     }
+    
+    public double getcoef()
+     {
+         return coef;
+     }
 }
