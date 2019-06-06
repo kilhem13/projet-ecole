@@ -8,6 +8,7 @@ package projet_final.dao;
 import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import projet_final.Connexion;
@@ -27,12 +28,30 @@ public class EleveDAO extends DAO<Eleve> {
 
     @Override
     public boolean create(Eleve obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+               String req = "INSERT INTO `personne` (`ID`, `NOM`, PRENOM, TYPE) VALUES (NULL, '"+obj.get_nom()+"', '"+ obj.get_prenom() +"', 1);";
+        try {
+            connect.executeUpdate(req);
+            System.out.println("Inserted");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DisciplineDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Discipline not found");
+            return false;
+        }
+    
     }
 
     @Override
     public boolean delete(Eleve obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String req = "DELETE FROM personne WHERE id = "+obj.get_id();
+        try {
+            connect.executeUpdate(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return true;
     }
 
     @Override

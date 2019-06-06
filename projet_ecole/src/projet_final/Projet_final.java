@@ -21,10 +21,11 @@ public class Projet_final {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
        
         Connexion con = new Connexion("ecole", "root", "radiateur");
-        Enseignant e = new Enseignant("Franc", 1, "Lauro", "Guilhem" ,2);
+        Eleve e = new Eleve(1, "Lauro", "Guilhem" ,1);
         
-        DAO<Enseignant> ensdao = new EnseignantDAO(con);
-        ensdao.create(e);
+        
+        DAO<Eleve> ensdao = new EleveDAO(con);
+        //ensdao.create(e);
         
         //EleveDAO.load_Eleve(con);
        // DAO<Enseignant> disdao = new EnseignantDAO(con);
@@ -32,11 +33,11 @@ public class Projet_final {
      
        
        
-       /*EnseignantDAO.load_enseignant(con);
+       EleveDAO.load_Eleve(con);
         for(int i = 0; i<Personne.get_liste_enseignant().size(); ++i)
             System.out.println(Personne.get_liste_enseignant().get(i).get_nom());
-        */
         
+       ensdao.delete(Personne.get_liste_eleve().get(3));
         
         /*Discipline d = new Discipline("Math", 4);
         

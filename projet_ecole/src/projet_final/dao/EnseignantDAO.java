@@ -40,7 +40,7 @@ public class EnseignantDAO extends DAO<Enseignant> {
             String[] res = result.get(0).split(",");
             System.out.println(res[0]);
             
-            String req4 = "SELECT ID FROM personne WHERE nom = '"+obj.get_nom()+"'";
+            String req4 = "SELECT ID FROM personne WHERE id = '"+obj.get_nom()+"'";
             ArrayList<String> result2 = connect.remplirChampsRequete(req4);
             
             String[] res2 = result2.get(0).split(",");
@@ -59,7 +59,7 @@ public class EnseignantDAO extends DAO<Enseignant> {
             Logger.getLogger(DisciplineDAO.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Discipline not found");
             return false;
-        } 
+        }
     }
 
     @Override
