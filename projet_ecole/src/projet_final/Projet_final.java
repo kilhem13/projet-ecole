@@ -31,6 +31,8 @@ public class Projet_final {
         
         DAO<Ecole> ecdao = new EcoleDAO(con);
         EcoleDAO.load_Classe(con, 1);
+        EleveDAO.load_Eleve(con);
+        ClasseDAO.load_eleve_in_classe(con);
         
         for(int i = 0 ; i < Ecole.get_ecole_list().size(); ++i)
         {
@@ -38,9 +40,12 @@ public class Projet_final {
             for(int j = 0; j<Ecole.get_ecole_list().get(i).get_classe().size(); ++j)
             {  System.out.println(Ecole.get_ecole_list().get(i).get_nom());
                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_nom());
+               for(int it_eleve = 0; it_eleve<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().size(); ++it_eleve)
+               System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_nom());
             }
             
         }
+        
         
         
         //ensdao.create(e);
