@@ -30,6 +30,10 @@ public class Ecole {
     {
         return this.id;
     }
+    public String get_nom()
+    {
+        return nom;
+    }
     public static ArrayList<Ecole>get_ecole_list()
     {
         return ecole_list;
@@ -37,5 +41,9 @@ public class Ecole {
     public void add_class(Classe c)
     {
         classe_liste.add(c);
+    }
+        public ArrayList<Classe> get_classe()
+    {
+        return classe_liste;
     }
 }

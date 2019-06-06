@@ -34,9 +34,12 @@ public class Projet_final {
         
         for(int i = 0 ; i < Ecole.get_ecole_list().size(); ++i)
         {
-            int j = 0;
-            while(System.out.println(Ecole.get_ecole_list().get(j))
-            System.out.println(Ecole.get_ecole_list().get(0).get_id());
+            //int j = 0;
+            for(int j = 0; j<Ecole.get_ecole_list().get(i).get_classe().size(); ++j)
+            {  System.out.println(Ecole.get_ecole_list().get(i).get_nom());
+               System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_nom());
+            }
+            
         }
         
         
