@@ -38,4 +38,8 @@ public class Ecole {
     {
         classe_liste.add(c);
     }
+    public ArrayList<Classe> get_classe()
+    {
+        return classe_liste;
+    }
 }
