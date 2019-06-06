@@ -16,4 +16,12 @@ public class AnneeScolaire {
     private ArrayList<Trimestre> trim_liste;
     private Date debut;
     private Date fin;
+    
+    public AnneeScolaire(int id, ArrayList<Trimestre> trim_liste,Date debut,Date fin)
+    {
+        this.id=id;
+        this.trim_liste=trim_liste;
+        this.debut=debut;
+        this.fin=fin;
+    }
 }

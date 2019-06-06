@@ -101,13 +101,36 @@ public class EleveDAO extends DAO<Eleve> {
            }
            
        } catch (SQLException ex) {
-            Logger.getLogger(EnseignantDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EleveDAO.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("null");
         }
        //ens = new Enseignant();
      
     
     }
+    
+     public static void load_AnneeScolaire (Connexion connect)
+     {
+         try
+         {
+             for(int i=0; i<Eleve.get_liste_eleve().size(); i++)
+             {
+             ArrayList<String> result;
+             result = connect.remplirChampsRequete("SELECT anneescolaire.id FROM anneescolaire,classe,inscription,personne WHERE classe.anneescolaire_id=anneescolaire.id AND classe.id=Inscription.classe_id AND Inscription.personne_id="+Eleve.get_liste_eleve().get(i).get_id());
+             System.out.println(result.size());
+             for(int j=0;j<result.size();j++)
+             {
+                 AnneeScolaire a =new AnneeScolaire(id);
+             }
+             }
+             
+         }
+         catch (SQLException ex)
+         {
+             Logger.getLogger(EnseignantDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("null");
+         }
+     }
     
     
     

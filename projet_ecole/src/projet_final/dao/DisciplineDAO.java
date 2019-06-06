@@ -113,5 +113,20 @@ public class DisciplineDAO extends DAO<Discipline> {
         }
        return dis;
     }
+    public static void load_discipline(Connexion connect)
+    {
+        try
+        {
+            ArrayList<String> result;
+           
+           result = connect.remplirChampsRequete("SELECT * FROM trimestre Where 1");
+            System.out.println(result.size());
+        }
+        catch(SQLException ex)
+        {
+            Logger.getLogger(DisciplineDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("null");
+        }
+    }
     
 }

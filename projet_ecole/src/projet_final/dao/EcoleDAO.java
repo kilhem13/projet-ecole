@@ -66,7 +66,7 @@ public class EcoleDAO extends DAO<Ecole> {
            }
            
        } catch (SQLException ex) {
-            Logger.getLogger(EnseignantDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EcoleDAO.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("null");
         }
        //ens = new Enseignant();
