@@ -23,11 +23,14 @@ public class Projet_final {
         Connexion con = new Connexion("ecole", "root", "radiateur");
        // DAO<Enseignant> disdao = new EnseignantDAO(con);
         EnseignantDAO.load_enseignant(con);
+        for(int i = 0; i<Personne.get_liste_enseignant().size(); ++i)
+            System.out.println(Personne.get_liste_enseignant().get(i).get_nom());
+        
         /*Discipline d = new Discipline("Math", 4);
         
         
         
-        
+       
         DAO<Discipline> disdao = new DisciplineDAO(con);
         disdao.delete(d);
       /* DAO<Eval> evaldao = new EvalDAO(con);

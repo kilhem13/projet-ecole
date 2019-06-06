@@ -13,7 +13,13 @@ import projet_final.*;
  * @author sarto
  */
 public class Eleve extends Personne{
-    private ArrayList<AnneeScolaire> annee_liste;
+    private ArrayList<AnneeScolaire> annee_liste = new ArrayList<AnneeScolaire>();
     private int id;
+    
+    public Eleve(int id, String nom, String prenom, int type)
+    {
+        super(id, nom, prenom, type);
+        
+    }
 
 }

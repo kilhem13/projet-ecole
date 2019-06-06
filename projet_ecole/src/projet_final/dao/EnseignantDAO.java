@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import projet_final.Connexion;
 import projet_final.Enseignant;
 import projet_final.Eval;
+import projet_final.Personne;
 
 /**
  *
@@ -75,21 +76,26 @@ public class EnseignantDAO extends DAO<Enseignant> {
           ArrayList<String> result;
            
            result = connect.remplirChampsRequete("SELECT * FROM Personne Where Type = 2");
-           
+           System.out.println(result.size());
            for(int j  = 0; j<result.size(); ++j)
            {
             String[] res = result.get(j).split(",");
-            for(int i = 0; i<res.length; ++i)
-             System.out.println(res[i]);
+           System.out.println(res[2]);
             int id = parseInt(res[0]);
             String prenom = res[1];
             String nom = res[2];
             String req = "SELECT nom FROM `discipline` WHERE `ID` = (SELECT DISCIPLINE_ID FROM enseignement WHERE PERSONNE_ID = "+id+" and id = (SELECT MIN(id) FROM enseignement WHERE PERSONNE_ID = "+ id +"))";
-            result = connect.remplirChampsRequete(req);
+            ArrayList<String> result2 = connect.remplirChampsRequete(req);
             
-            res = result.get(j).split(",");
-            for(int i = 0; i<res.length; ++i)
-             System.out.println(res[i]);
+            res = result2.get(0).split(",");
+            String discip = "";
+            for(int k = 0; k<res.length; ++k)
+             discip = res[k];
+            
+            Enseignant e = new Enseignant(discip, id, prenom, nom, 2);
+            //System.out.println(e);
+            Personne.add_en_to_array(e);
+            
            }
            
            /*     if(result.first()){
@@ -102,6 +108,7 @@ public class EnseignantDAO extends DAO<Enseignant> {
         );*/
        } catch (SQLException ex) {
             Logger.getLogger(EnseignantDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("null");
         }
        //ens = new Enseignant();
      
