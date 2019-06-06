@@ -30,5 +30,9 @@ public class Classe {
         this.nom = nom;
         this.niveau = niveau;
     }
+     public String get_nom()
+     {
+         return nom;
+     }
 
 }
