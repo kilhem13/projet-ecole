@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author sarto
  */
 public class AnneeScolaire {
+    private int id;
     private ArrayList<Trimestre> trim_liste;
     private Date debut;
     private Date fin;

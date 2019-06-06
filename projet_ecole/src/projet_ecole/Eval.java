@@ -13,4 +13,6 @@ public class Eval {
     private double note;
     private String appreciation;
     private double coef;
+    private int id;
+
 }

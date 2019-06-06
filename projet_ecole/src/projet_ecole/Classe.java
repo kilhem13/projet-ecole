@@ -15,4 +15,6 @@ public class Classe {
     private String nom;
     private String niveau;
     private ArrayList<Personne> eleve_liste;
+    private int id;
+
 }

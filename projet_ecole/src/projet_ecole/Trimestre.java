@@ -14,4 +14,5 @@ public class Trimestre {
     private Date debut;
     private Date fin;
     private Bulletin bulletin;
+    private int id;
 }

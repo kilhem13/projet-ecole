@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author sarto
  */
 public class Bulletin {
+    private int id;
     private String appreciation;
     private ArrayList<Discipline> displine_liste;
 }

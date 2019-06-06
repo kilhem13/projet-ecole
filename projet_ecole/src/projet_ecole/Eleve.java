@@ -13,4 +13,6 @@ import java.util.ArrayList;
  */
 public class Eleve extends Personne{
     private ArrayList<AnneeScolaire> annee_liste;
+    private int id;
+
 }

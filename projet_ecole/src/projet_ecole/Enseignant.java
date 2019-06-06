@@ -11,4 +11,6 @@ package projet_ecole;
  */
 public class Enseignant extends Personne {
     private String discipline;
+    private int id;
+
 }

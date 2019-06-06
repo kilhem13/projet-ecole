@@ -16,6 +16,8 @@ public class Discipline {
     private ArrayList<Eval> note_liste;
     private Enseignant enseignant;
     private double coef;
+    private int id;
+    
     
     
 }

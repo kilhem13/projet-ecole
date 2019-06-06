@@ -12,5 +12,6 @@ package projet_ecole;
 public class Personne {
     private String nom;
     private String prenom;
-    
+    private int id;
+
 }
