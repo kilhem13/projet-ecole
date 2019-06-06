@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Classe {
     private String nom;
     private String niveau;
-    private ArrayList<Personne> eleve_liste;
+    private ArrayList<Eleve> eleve_liste = new ArrayList<>();
     private int id;
     
     public Classe()
@@ -33,6 +33,19 @@ public class Classe {
      public String get_nom()
      {
          return nom;
+     }
+     public int get_id()
+     {
+         return this.id;
+     }
+     
+     public void add_eleve(Eleve e)
+     {
+         this.eleve_liste.add(e);
+     }
+     public ArrayList<Eleve> get_eleve_list()
+     {
+         return eleve_liste;
      }
 
 }
