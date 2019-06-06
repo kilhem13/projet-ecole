@@ -17,6 +17,7 @@ package projet_final;
     private double note;
     private String appreciation;
     private int id;
+    private double coef;
     
     public Eval()
     {
@@ -30,5 +31,13 @@ package projet_final;
         this.appreciation = app;
         this.id = id;
     }
+     public double getnote()
+     {
+         return note;
+     }
+    public double getcoef()
+     {
+         return coef;
+     }
     
 }
