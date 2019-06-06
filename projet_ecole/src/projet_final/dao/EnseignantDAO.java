@@ -84,7 +84,7 @@ public class EnseignantDAO extends DAO<Enseignant> {
             int id = parseInt(res[0]);
             String prenom = res[1];
             String nom = res[2];
-            String req = "SELECT nom FROM `discipline` WHERE `ID` = (SELECT DISCIPLINE_ID FROM enseignement WHERE PERSONNE_ID ="+ id +")";
+            String req = "SELECT nom FROM `discipline` WHERE `ID` = (SELECT DISCIPLINE_ID FROM enseignement WHERE PERSONNE_ID = "+id+" and id = (SELECT MIN(id) FROM enseignement WHERE PERSONNE_ID = "+ id +"))";
             result = connect.remplirChampsRequete(req);
             
             res = result.get(j).split(",");
