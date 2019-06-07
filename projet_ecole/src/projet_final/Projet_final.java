@@ -34,6 +34,7 @@ public class Projet_final {
         EleveDAO.load_Eleve(con);
         ClasseDAO.load_eleve_in_classe(con);
         EleveDAO.load_Bulletin(con);
+        BulletinDAO.load_Discipline(con);
         for(int i = 0 ; i < Ecole.get_ecole_list().size(); ++i)
         {
             //int j = 0;
@@ -49,8 +50,9 @@ public class Projet_final {
                for(int it_eleve = 0; it_eleve<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().size(); ++it_eleve)
                {
                     System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_nom()  +" Appreciation ");
-                    
-                    Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).afficher_appreciation_bulletin();;
+                    System.out.println("Les matieres sont: ");
+                    for(int it_disc = 0 ; it_disc<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().size(); ++it_disc)
+                       System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().get(it_disc).get_nom());
                }
                }
             }
