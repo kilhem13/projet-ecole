@@ -21,7 +21,6 @@ import java.util.ArrayList;
  * @author sarto
  */
 public class Discipline {
-    private static 
     private String nom;
     private ArrayList<Eval> note_liste;
     private double coef;
