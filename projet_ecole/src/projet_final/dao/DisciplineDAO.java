@@ -123,12 +123,25 @@ public class DisciplineDAO extends DAO<Discipline> {
                 for (int j = 0; j < Eleve.get_liste_eleve().get(i).get_bulletin_liste().size(); j++) {
                     for (int k = 0; k < Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_discipline_liste().size(); k++) {
                         ArrayList<String> result;
-                        result = connect.remplirChampsRequete("SELECT evaluation.id, evaluation.note, evaluation.appreciation, evaluation.coef FROM evaluation , detailbulletin WHERE detailbulletin.id ="+Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_discipline_liste().get(k).get_id());
+                        result = connect.remplirChampsRequete("SELECT evaluation.id, evaluation.note, evaluation.appreciation, evaluation.coef FROM evaluation , detailbulletin WHERE detailbulletin_id ="+Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_discipline_liste().get(k).get_id()+ " AND detailbulletin.id = " + Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_discipline_liste().get(k).get_id());
                         System.out.println(result.size());
 
-                        for (int l = 0; l < result.size(); l++) {
+                        for (int l = 0; l < result.size(); l++) 
+                        {
                             String[] res = result.get(l).split(",");
-                            Eval e= new Eval(parseInt(res[0]),parseDouble(res[1]),res[2],parseDouble(res[3]));
+                            String res_parse = "";
+                            for(int indice_char = 0; indice_char < res.length; ++indice_char)
+                                  {
+                                      String b = "" + res[3].charAt(indice_char);
+                                      if(!b.equals("\n"))
+                                      {
+                                      res_parse = res_parse + res[3].charAt(indice_char);
+                                    }
+                                      else
+                                          break;
+                                  }
+                            
+                            Eval e= new Eval(parseInt(res[0]),parseDouble(res[1]),res[2],parseDouble(res_parse));
                             Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_discipline_liste().get(k).add_eval(e);
                         }
                     }

@@ -35,6 +35,8 @@ public class Projet_final {
         ClasseDAO.load_eleve_in_classe(con);
         EleveDAO.load_Bulletin(con);
         BulletinDAO.load_Discipline(con);
+        DisciplineDAO.load_liste_eval(con);
+        
         for(int i = 0 ; i < Ecole.get_ecole_list().size(); ++i)
         {
             //int j = 0;
@@ -52,8 +54,20 @@ public class Projet_final {
                     System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_nom()  +" Appreciation ");
                     System.out.println("Les matieres sont: ");
                     for(int it_disc = 0 ; it_disc<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().size(); ++it_disc)
-                       System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().get(it_disc).get_nom());
-               }
+                    {
+                        System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().get(it_disc).get_nom());
+                        for(int it_eval = 0 ; it_eval<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().size(); ++it_eval)
+                            {
+                                try{
+                                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().get(it_disc).get_liste_eval().get(it_eval).getnote());
+                                }
+                                catch(Exception ex)
+                                    {
+                                        System.out.println("Toutes les notes sont chargées");
+                                    }
+                           }
+                    }
+                }
                }
             }
             

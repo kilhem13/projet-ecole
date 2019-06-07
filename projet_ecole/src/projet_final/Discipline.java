@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class Discipline {
     private String nom;
-    private ArrayList<Eval> note_liste;
+    private ArrayList<Eval> note_liste = new ArrayList<>();
     private double coef;
     private int id; //id de détail bulletin
     
@@ -37,7 +37,6 @@ public class Discipline {
     public Discipline(String nom, double coef, int id)
     {
         this.nom = nom;
-        this.note_liste = null;
         this.coef = coef;
         this.id=id;
     }
@@ -70,6 +69,10 @@ public class Discipline {
     public void add_eval(Eval e)
     {
         note_liste.add(e);
+    }
+    public ArrayList<Eval> get_liste_eval()
+    {
+        return this.note_liste;
     }
 
 
