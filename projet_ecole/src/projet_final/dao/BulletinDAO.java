@@ -63,12 +63,12 @@ public class BulletinDAO extends DAO<Bulletin> {
             for (int i = 0; i < Eleve.get_liste_eleve().size(); i++) {
                 for (int j = 0; j < Eleve.get_liste_eleve().get(i).get_bulletin_liste().size(); j++) {
                     ArrayList<String> result;
-                    result = connect.remplirChampsRequete("SELECT discipline.nom, detailbulletin.coef FROM detailbulletin, discipline,enseignement WHERE discipline.id=enseignement.discipline_id AND enseignement.id=detailbulletin.enseignement_id AND detailbulletin.bulletin_id ="+Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j));
+                    result = connect.remplirChampsRequete("SELECT discipline.nom, detailbulletin.coef, detailbulletin.id FROM detailbulletin, discipline,enseignement WHERE discipline.id=enseignement.discipline_id AND enseignement.id=detailbulletin.enseignement_id AND detailbulletin.bulletin_id ="+Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j));
                     System.out.println(result.size());
 
                     for (int k = 0; k < result.size(); k++) {
                         String[] res = result.get(k).split(",");
-                        Discipline d = new Discipline(res[0],parseDouble(res[1]));
+                        Discipline d = new Discipline(res[0],parseDouble(res[1]),parseInt(res[2]));
                         Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).add_discipline(d);
                     }
                 }
