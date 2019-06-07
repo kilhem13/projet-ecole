@@ -16,19 +16,22 @@ public class Classe {
     private String niveau;
     private ArrayList<Eleve> eleve_liste = new ArrayList<>();
     private int id;
+    private int annee_scolaire;
     
     public Classe()
     {
         this.nom = "";
         this.niveau = "";
         this.id = 0;
+        this.annee_scolaire = 0;
     }
     
-     public Classe(int id, String nom, String niveau)
+     public Classe(int id, String nom, String niveau, int annee)
     {
         this.id = id;
         this.nom = nom;
         this.niveau = niveau;
+         this.annee_scolaire = annee;
     }
      public String get_nom()
      {
@@ -52,5 +55,10 @@ public class Classe {
          for(int i = 0; i < this.eleve_liste.size(); ++i)
             System.out.println(this.eleve_liste.get(i).get_prenom() +" "+ this.eleve_liste.get(i).get_nom());
      }
+     public int get_annee_scolaire()
+     {
+         return this.annee_scolaire;
+     } 
 
+   
 }

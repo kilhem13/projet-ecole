@@ -122,12 +122,20 @@ public class ClasseDAO extends DAO<Classe> {
                     {
                         //try
                             {
-                              // the String to int conversion happens here
-                             // int eleve = Integer.parseInt(res[0]);
-
-                              // print out the value after the conversion
+                              
                               System.out.println("int i = " + i);
-                              String res_parse = "" + res[0].charAt(0);
+                              String res_parse = "";
+                              for(int indice_char = 0; indice_char < res.length; ++indice_char)
+                              {
+                                  String b = "res[0].charAt(indice_char) + res[0].charAt(indice_char+1)";
+                                  if(!b.equals("\n"))
+                                  {
+                                  res_parse = res_parse + res[0].charAt(indice_char);
+                                }
+                                  else
+                                      break;
+                              }
+                              
                               
                               if( res_parse.equalsIgnoreCase( String.valueOf(Personne.get_liste_eleve().get(it_eleve).get_id())))
                                 {

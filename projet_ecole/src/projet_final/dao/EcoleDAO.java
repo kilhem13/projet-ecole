@@ -85,7 +85,8 @@ public class EcoleDAO extends DAO<Ecole> {
            {
             String[] res = result.get(j).split(",");
             System.out.println(res[0]);
-            Classe c = new Classe(parseInt(res[0]), res[1], res[3]);
+            Classe c = new Classe(parseInt(res[0]), res[1], res[3], parseInt("" + res[4].charAt(0) + res[4].charAt(1) + res[4].charAt(2) + res[4].charAt(3)));
+           
             Ecole.get_ecole_list().get(i).add_class(c);
            // int id = parseInt(res[0]);
            }

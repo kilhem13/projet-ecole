@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class AnneeScolaire {
     private int id;
-    private ArrayList<Trimestre> trim_liste;
+    private ArrayList<Trimestre> trim_liste = new ArrayList();
     private Date debut;
     private Date fin;
     
@@ -24,4 +24,13 @@ public class AnneeScolaire {
         this.debut=debut;
         this.fin=fin;
     }
+    
+    public AnneeScolaire(int id)
+    {
+        this.id=id;
+        this.debut= new Date();
+        this.fin=new Date();
+    }
+    
+    //public void 
 }

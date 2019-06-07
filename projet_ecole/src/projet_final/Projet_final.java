@@ -40,8 +40,11 @@ public class Projet_final {
             for(int j = 0; j<Ecole.get_ecole_list().get(i).get_classe().size(); ++j)
             {  System.out.println(Ecole.get_ecole_list().get(i).get_nom());
                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_nom());
-               System.out.println("What i want");
+               System.out.println("Liste eleve classe" + Ecole.get_ecole_list().get(i).get_classe().get(j).get_nom());
                Ecole.get_ecole_list().get(i).get_classe().get(j).afficher_eleve();
+               System.out.println("Annee Scolaire");
+               System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_annee_scolaire());
+               
                for(int it_eleve = 0; it_eleve<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().size(); ++it_eleve)
                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_nom());
             }

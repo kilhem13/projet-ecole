@@ -25,5 +25,10 @@ public class Eleve extends Personne{
     {
         
     }
+    
+    public void add_annee(AnneeScolaire a)
+    {
+        annee_liste.add(a);
+    }
 
 }
