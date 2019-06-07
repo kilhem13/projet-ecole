@@ -40,5 +40,13 @@ public class Bulletin {
     {
         return discipline_liste;
     }
+    public void add_discipline(Discipline d)
+    {
+        discipline_liste.add(d);
+    }
+    public int get_id()
+    {
+        return id;
+    }
 } 
 

@@ -68,9 +68,8 @@ public class BulletinDAO extends DAO<Bulletin> {
 
                     for (int k = 0; k < result.size(); k++) {
                         String[] res = result.get(k).split(",");
-                        Discipline d = new Discipline(res[0],parseDouble[1]);
-                        Bulletin b = new Bulletin(parseInt(res[0]), res[1]);
-                        Eleve.get_liste_eleve().get(i).add_bulletin(b);
+                        Discipline d = new Discipline(res[0],parseDouble(res[1]));
+                        Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).add_discipline(d);
                     }
                 }
             }
