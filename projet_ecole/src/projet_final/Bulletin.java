@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Bulletin {
     private int id;
     private String appreciation;
-    private ArrayList<Discipline> discipline_liste;
+    private ArrayList<Discipline> discipline_liste = new ArrayList<>();
     
     public Bulletin(int id, String appreciation)
     {
