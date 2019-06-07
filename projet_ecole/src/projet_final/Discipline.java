@@ -63,5 +63,14 @@ public class Discipline {
      {
          return coef;
      }
+    public int get_id()
+     {
+         return id;
+     }
+    public void add_eval(Eval e)
+    {
+        note_liste.add(e);
+    }
+
 
 }

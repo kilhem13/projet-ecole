@@ -123,13 +123,13 @@ public class DisciplineDAO extends DAO<Discipline> {
                 for (int j = 0; j < Eleve.get_liste_eleve().get(i).get_bulletin_liste().size(); j++) {
                     for (int k = 0; k < Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_discipline_liste().size(); k++) {
                         ArrayList<String> result;
-                        result = connect.remplirChampsRequete("");
+                        result = connect.remplirChampsRequete("SELECT evaluation.id, evaluation.note, evaluation.appreciation, evaluation.coef FROM evaluation , detailbulletin WHERE detailbulletin.id ="+Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_discipline_liste().get(k).get_id());
                         System.out.println(result.size());
 
                         for (int l = 0; l < result.size(); l++) {
-                            String[] res = result.get(k).split(",");
-                            Discipline d = new Discipline(res[0], parseDouble(res[1]));
-                            Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).add_discipline(d);
+                            String[] res = result.get(l).split(",");
+                            Eval e= new Eval(parseInt(res[0]),parseDouble(res[1]),res[2],parseDouble(res[3]));
+                            Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_discipline_liste().get(k).add_eval(e);
                         }
                     }
                 }
