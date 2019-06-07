@@ -53,9 +53,10 @@ public class Projet_final {
                {
                     System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_nom()  +" Appreciation ");
                     System.out.println("Les matieres sont: ");
-                    for(int it_disc = 0 ; it_disc<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().size(); ++it_disc)
+                    for(int it_bul = 0 ; it_bul<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().size(); ++it_bul)
                     {
-                        System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().get(it_disc).get_nom());
+                        for(int it_disc = 0 ; it_disc<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(it_bul).get_discipline_liste().size(); ++it_disc)
+                        { System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().get(it_disc).get_nom());
                         for(int it_eval = 0 ; it_eval<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().size(); ++it_eval)
                             {
                                 try{
@@ -66,6 +67,7 @@ public class Projet_final {
                                         System.out.println("Toutes les notes sont chargées");
                                     }
                            }
+                        }
                     }
                 }
                }
