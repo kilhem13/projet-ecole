@@ -24,19 +24,22 @@ public class Discipline {
     private String nom;
     private ArrayList<Eval> note_liste;
     private double coef;
+    private int id; //id de détail bulletin
     
     public Discipline()
     {
         this.nom = null;
         this.note_liste = null;
         this.coef = 0;
+        this.id=0;
     }
     
-    public Discipline(String nom, double coef)
+    public Discipline(String nom, double coef, int id)
     {
         this.nom = nom;
         this.note_liste = null;
         this.coef = coef;
+        this.id=id;
     }
     public String get_nom()
     {

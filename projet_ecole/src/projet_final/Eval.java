@@ -25,11 +25,12 @@ package projet_final;
         this.appreciation = null;
         this.id = 0;
     }
-     public Eval(int id, double note, String app)
+     public Eval(int id, double note, String app,double coef)
     {
         this.note = note;
         this.appreciation = app;
         this.id = id;
+        this.coef=coef;
     }
 
      public double getnote()
