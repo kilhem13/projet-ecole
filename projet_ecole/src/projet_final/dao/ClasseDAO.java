@@ -127,8 +127,9 @@ public class ClasseDAO extends DAO<Classe> {
 
                               // print out the value after the conversion
                               System.out.println("int i = " + i);
+                              String res_parse = "" + res[0].charAt(0);
                               
-                              if( res[0].equalsIgnoreCase( String.valueOf(Personne.get_liste_eleve().get(it_eleve).get_id())))
+                              if( res_parse.equalsIgnoreCase( String.valueOf(Personne.get_liste_eleve().get(it_eleve).get_id())))
                                 {
                                     e = Personne.get_liste_eleve().get(it_eleve);
                                     Ecole.get_ecole_list().get(i).get_classe().get(y).add_eleve(e);

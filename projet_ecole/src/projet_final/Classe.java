@@ -47,5 +47,10 @@ public class Classe {
      {
          return eleve_liste;
      }
+     public void afficher_eleve()
+     {
+         for(int i = 0; i < this.eleve_liste.size(); ++i)
+            System.out.println(this.eleve_liste.get(i).get_prenom() +" "+ this.eleve_liste.get(i).get_nom());
+     }
 
 }
