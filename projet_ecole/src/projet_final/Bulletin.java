@@ -36,5 +36,9 @@ public class Bulletin {
     {
         return this.appreciation;
     }
+    public ArrayList<Discipline> get_discipline_liste()
+    {
+        return discipline_liste;
+    }
 } 
 

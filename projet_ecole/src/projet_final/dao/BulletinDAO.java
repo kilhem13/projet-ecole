@@ -5,12 +5,14 @@
  */
 package projet_final.dao;
 
+import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import projet_final.Bulletin;
 import projet_final.Connexion;
+import projet_final.Eleve;
 
 /**
  *
@@ -57,5 +59,23 @@ public class BulletinDAO extends DAO<Bulletin>{
             System.out.println("null");
         }
     }
-    
+    public static void load_Discipline (Connexion connect)
+     {
+         try
+         {
+             for(int i=0; i<Eleve.get_liste_eleve().size(); i++)
+             {
+                for(int j=0;j<result.size();j++)
+                {
+                    
+                }
+             }
+             
+         }
+         catch (SQLException ex)
+         {
+             Logger.getLogger(EnseignantDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("null");
+         }
+     }
 }

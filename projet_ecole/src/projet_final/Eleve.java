@@ -38,6 +38,12 @@ public class Eleve extends Personne{
             System.out.println(bulletin_liste.get(i).get_appreciation());
         }
     }
+    
+    public ArrayList<Bulletin> get_bulletin_liste()
+    {
+        return bulletin_liste;
+    }
+            
             
 
 }

@@ -116,11 +116,11 @@ public class DisciplineDAO extends DAO<Discipline> {
         }
        return dis;
     }
-     public static void load_eval(int id)
+     public static void load_liste_eval()
     {
         try {
            ArrayList<String> result;
-           result = connect.remplirChampsRequete("SELECT * FROM eval WHERE id = "+ id);
+           result = connect.remplirChampsRequete("SELECT * FROM evaluation WHERE evaluation.detailbulletin_id ="+ );
            String[] res = result.get(0).split(",");
            for(int i = 0; i<res.length; ++i)
             System.out.println(res[i]);
