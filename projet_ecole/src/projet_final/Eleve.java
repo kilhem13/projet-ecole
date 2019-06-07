@@ -13,7 +13,7 @@ import projet_final.*;
  * @author sarto
  */
 public class Eleve extends Personne{
-    private ArrayList<AnneeScolaire> annee_liste = new ArrayList<AnneeScolaire>();
+    private ArrayList<Bulletin> bulletin_liste = new ArrayList<Bulletin>();
     private int id;
     
     public Eleve(int id, String nom, String prenom, int type)
@@ -26,9 +26,18 @@ public class Eleve extends Personne{
         
     }
     
-    public void add_annee(AnneeScolaire a)
+    public void add_bulletin(Bulletin b)
     {
-        annee_liste.add(a);
+        bulletin_liste.add(b);
     }
+    
+    public void afficher_appreciation_bulletin()
+    {
+        for(int i = 0; i< bulletin_liste.size(); ++i)
+        {
+            System.out.println(bulletin_liste.get(i).get_appreciation());
+        }
+    }
+            
 
 }

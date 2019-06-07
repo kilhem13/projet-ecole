@@ -16,7 +16,11 @@ public class Bulletin {
     private String appreciation;
     private ArrayList<Discipline> discipline_liste;
     
-    
+    public Bulletin(int id, String appreciation)
+    {
+        this.id = id;
+        this.appreciation = appreciation;
+    }
     public double moyenne()
     {
         double coeff=0;
@@ -27,6 +31,10 @@ public class Bulletin {
             coeff+=discipline_liste.get(i).getcoef();
         }
         return moy/coeff;
+    }
+    public String get_appreciation()
+    {
+        return this.appreciation;
     }
 } 
 

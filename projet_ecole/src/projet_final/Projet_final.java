@@ -33,7 +33,7 @@ public class Projet_final {
         EcoleDAO.load_Classe(con, 1);
         EleveDAO.load_Eleve(con);
         ClasseDAO.load_eleve_in_classe(con);
-        
+        EleveDAO.load_Bulletin(con);
         for(int i = 0 ; i < Ecole.get_ecole_list().size(); ++i)
         {
             //int j = 0;
@@ -42,11 +42,17 @@ public class Projet_final {
                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_nom());
                System.out.println("Liste eleve classe" + Ecole.get_ecole_list().get(i).get_classe().get(j).get_nom());
                Ecole.get_ecole_list().get(i).get_classe().get(j).afficher_eleve();
+               
                System.out.println("Annee Scolaire");
                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_annee_scolaire());
                
                for(int it_eleve = 0; it_eleve<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().size(); ++it_eleve)
-               System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_nom());
+               {
+                    System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_nom()  +" Appreciation ");
+                    
+                    Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).afficher_appreciation_bulletin();;
+               }
+               }
             }
             
         }

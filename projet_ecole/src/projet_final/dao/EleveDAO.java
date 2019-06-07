@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import projet_final.Bulletin;
 import projet_final.Connexion;
 import projet_final.Eleve;
 import projet_final.Enseignant;
@@ -109,19 +110,22 @@ public class EleveDAO extends DAO<Eleve> {
     
     }
     
-     public static void load_AnneeScolaire (Connexion connect)
+     public static void load_Bulletin (Connexion connect)
      {
          try
          {
              for(int i=0; i<Eleve.get_liste_eleve().size(); i++)
              {
-             ArrayList<String> result;
-             result = connect.remplirChampsRequete("SELECT anneescolaire.id FROM anneescolaire,classe,inscription,personne WHERE classe.anneescolaire_id=anneescolaire.id AND classe.id=Inscription.classe_id AND Inscription.personne_id="+Eleve.get_liste_eleve().get(i).get_id());
-             System.out.println(result.size());
-             for(int j=0;j<result.size();j++)
-             {
-                 AnneeScolaire a =new AnneeScolaire(id);
-             }
+                ArrayList<String> result;
+                result = connect.remplirChampsRequete("SELECT * FROM bulletin WHERE inscription_id = (SELECT inscription.id FROM inscription where personne_id  = "+Eleve.get_liste_eleve().get(i).get_id()+");");
+                System.out.println(result.size());
+                
+                for(int j=0;j<result.size();j++)
+                {
+                    String[] res = result.get(j).split(",");
+                    Bulletin b = new Bulletin(parseInt(res[0]), res[1]);
+                    Eleve.get_liste_eleve().get(i).add_bulletin(b);
+                }
              }
              
          }
