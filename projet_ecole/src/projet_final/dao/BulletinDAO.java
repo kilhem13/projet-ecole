@@ -63,7 +63,7 @@ public class BulletinDAO extends DAO<Bulletin> {
             for (int i = 0; i < Eleve.get_liste_eleve().size(); i++) {
                 for (int j = 0; j < Eleve.get_liste_eleve().get(i).get_bulletin_liste().size(); j++) {
                     ArrayList<String> result;
-                    result = connect.remplirChampsRequete("SELECT discipline.nom, detailbulletin.coef, detailbulletin.id FROM detailbulletin, discipline,enseignement WHERE discipline.id=enseignement.discipline_id AND enseignement.id=detailbulletin.enseignement_id AND detailbulletin.bulletin_id ="+Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j));
+                    result = connect.remplirChampsRequete("SELECT discipline.nom, detailbulletin.coef, detailbulletin.id FROM detailbulletin, discipline,enseignement WHERE discipline.id=enseignement.discipline_id AND enseignement.id=detailbulletin.enseignement_id AND detailbulletin.bulletin_id ="+Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).get_id());
 
                     System.out.println(result.size());
 
@@ -73,17 +73,17 @@ public class BulletinDAO extends DAO<Bulletin> {
 
                         for(int indice_char = 0; indice_char < res.length; ++indice_char)
                               {
-                                  String b = "" + res[1].charAt(indice_char);
+                                  String b = "" + res[2].charAt(indice_char);
                                   if(!b.equals("\n"))
                                   {
-                                  res_parse = res_parse + res[1].charAt(indice_char);
+                                  res_parse = res_parse + res[2].charAt(indice_char);
                                 }
                                   else
                                       break;
                               }
                         
                         
-                        Discipline d = new Discipline(res[0],parseDouble(res_parse));
+                        Discipline d = new Discipline(res[0],parseDouble(res[1]), parseInt(res_parse) );
 
                         Eleve.get_liste_eleve().get(i).get_bulletin_liste().get(j).add_discipline(d);
                     }
