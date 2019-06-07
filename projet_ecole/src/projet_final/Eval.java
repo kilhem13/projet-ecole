@@ -5,6 +5,8 @@
  */
 package projet_final;
 
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,6 +20,7 @@ package projet_final;
     private String appreciation;
     private int id;
     private double coef;
+    private static ArrayList<Eval> liste_eval;
     
     public Eval()
     {
@@ -40,5 +43,8 @@ package projet_final;
      {
          return coef;
      }
-    
+    public static ArrayList<Eval> get_liste_eval()
+    {
+        return liste_eval;
+    }
 }

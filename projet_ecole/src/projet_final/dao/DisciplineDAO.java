@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import projet_final.Connexion;
 import projet_final.Discipline;
+import projet_final.Eleve;
 import projet_final.Enseignant;
 import projet_final.Eval;
 
@@ -30,8 +31,8 @@ public class DisciplineDAO extends DAO<Discipline> {
     @Override
     public boolean create(Discipline obj) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
-        String req = "INSERT INTO `discipline` (`ID`, `NOM`) VALUES (NULL, '"+obj.get_nom()+"');";
+
+        String req = "INSERT INTO `discipline` (`ID`, `NOM`) VALUES (NULL, '" + obj.get_nom() + "');";
         try {
             connect.executeUpdate(req);
             System.out.println("Inserted");
@@ -46,7 +47,7 @@ public class DisciplineDAO extends DAO<Discipline> {
     @Override
     public boolean delete(Discipline obj) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        String req = "DELETE FROM `discipline` WHERE nom='"+obj.get_nom()+"';";
+        String req = "DELETE FROM `discipline` WHERE nom='" + obj.get_nom() + "';";
         try {
             connect.executeUpdate(req);
             System.out.println("Deleted");
@@ -61,22 +62,21 @@ public class DisciplineDAO extends DAO<Discipline> {
     @Override
     public boolean update(Discipline obj) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       try {
-           System.out.println("What to update ?");
-           Scanner myObj = new Scanner(System.in);
-           int num  = myObj.nextInt();
-           switch(num)
-           {
-               case 1:
-                   Scanner myObj2 = new Scanner(System.in);
-                   String  new_name = myObj2.nextLine();
-                   String req = "UPDATE discipline SET nom = '"+ new_name +"' WHERE nom = '"+ obj.get_nom()+"'";
-                   connect.executeUpdate(req);
-                  
-           }
-           return true;
-           
-           /*     if(result.first()){
+        try {
+            System.out.println("What to update ?");
+            Scanner myObj = new Scanner(System.in);
+            int num = myObj.nextInt();
+            switch (num) {
+                case 1:
+                    Scanner myObj2 = new Scanner(System.in);
+                    String new_name = myObj2.nextLine();
+                    String req = "UPDATE discipline SET nom = '" + new_name + "' WHERE nom = '" + obj.get_nom() + "'";
+                    connect.executeUpdate(req);
+
+            }
+            return true;
+
+            /*     if(result.first()){
         ens = new Enseignant(id, result.getString("cls_nom"));
 
         result = this.connect.createStatement().executeQuery(
@@ -84,7 +84,7 @@ public class DisciplineDAO extends DAO<Discipline> {
           "INNER JOIN j_mat_prof ON prof_id = jmp_prof_k " +
           "INNER JOIN j_cls_jmp ON jmp_id = jcm_jmp_k AND jcm_cls_k = " + id
         );*/
-       } catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(EnseignantDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
@@ -92,18 +92,18 @@ public class DisciplineDAO extends DAO<Discipline> {
 
     @Override
     public Discipline find(int id) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       Discipline dis = new Discipline();
-       try {
-           ArrayList<String> result;
-           result = connect.remplirChampsRequete("SELECT * FROM enseignant WHERE id = "+ id);
-           String[] res = result.get(0).split(",");
-           for(int i = 0; i<res.length; ++i)
-            System.out.println(res[i]);
-           Discipline d = new Discipline(res[0],0);
-           
-           
-           /*     if(result.first()){
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Discipline dis = new Discipline();
+        try {
+            ArrayList<String> result;
+            result = connect.remplirChampsRequete("SELECT * FROM enseignant WHERE id = " + id);
+            String[] res = result.get(0).split(",");
+            for (int i = 0; i < res.length; ++i) {
+                System.out.println(res[i]);
+            }
+            Discipline d = new Discipline(res[0], 0);
+
+            /*     if(result.first()){
         ens = new Enseignant(id, result.getString("cls_nom"));
 
         result = this.connect.createStatement().executeQuery(
@@ -111,23 +111,30 @@ public class DisciplineDAO extends DAO<Discipline> {
           "INNER JOIN j_mat_prof ON prof_id = jmp_prof_k " +
           "INNER JOIN j_cls_jmp ON jmp_id = jcm_jmp_k AND jcm_cls_k = " + id
         );*/
-       } catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(EnseignantDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return dis;
+        return dis;
     }
-     public static void load_eval(int id)
-    {
+
+    public static void load_eval(Connexion connect) {
         try {
-           ArrayList<String> result;
-           result = connect.remplirChampsRequete("SELECT * FROM eval WHERE id = "+ id);
-           String[] res = result.get(0).split(",");
-           for(int i = 0; i<res.length; ++i)
-            System.out.println(res[i]);
-           Eval e = new Eval( parseInt(res[0]), parseDouble(res[2]), res[1]);
-           
-           
-           /*     if(result.first()){
+            for (int i = 0; i < Discipline.get_discipline_liste().size(); i++) {
+                ArrayList<String> result;
+                //SELECT evaluation.id ,evaluation.note,evaluation.appreciation
+                //FROM personne, enseignement, detailbulletin, evaluation 
+                //WHERE evaluation.detailbulletin_id=detailbulletin.id ,
+                //detailbulletin.enseignement_id=enseignement.id,
+                //enseignement.personne_id=personne.id,
+                result = connect.remplirChampsRequete("SELECT * FROM eval WHERE id = " + );
+                String[] res = result.get(0).split(",");
+                for (int i = 0; i < res.length; ++i) {
+                    System.out.println(res[i]);
+                }
+                Eval e = new Eval(parseInt(res[0]), parseDouble(res[2]), res[1]);
+            }
+
+            /*     if(result.first()){
         eval = new Eval(id, result.getString("cls_nom"));
 
         result = this.connect.createStatement().executeQuery(
@@ -135,10 +142,9 @@ public class DisciplineDAO extends DAO<Discipline> {
           "INNER JOIN j_mat_prof ON prof_id = jmp_prof_k " +
           "INNER JOIN j_cls_jmp ON jmp_id = jcm_jmp_k AND jcm_cls_k = " + id
         );*/
-       } catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(EvalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
 }

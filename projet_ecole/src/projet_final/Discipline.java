@@ -24,6 +24,7 @@ public class Discipline {
     private String nom;
     private ArrayList<Eval> note_liste;
     private double coef;
+    private static ArrayList<Discipline> discipline_liste;
     
     public Discipline()
     {
@@ -61,4 +62,8 @@ public class Discipline {
          return coef;
      }
 
+    public static ArrayList<Discipline> get_discipline_liste()
+    {
+        return discipline_liste;
+    }
 }
