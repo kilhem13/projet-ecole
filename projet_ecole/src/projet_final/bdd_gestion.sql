@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `bdd_gestion`
 --
+CREATE DATABASE bdd_gestion;
+use bdd_gestion;
 
 -- --------------------------------------------------------
 
