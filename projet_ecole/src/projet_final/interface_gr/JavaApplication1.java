@@ -3,23 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projet_final;
-
-import java.sql.Connection;
+  package projet_final.interface_gr;
 import java.sql.SQLException;
-import projet_final.dao.*;
+import javax.swing.JFrame;
+import projet_final.Connexion;
+import projet_final.Ecole;
+import projet_final.Eleve;
+import projet_final.dao.BulletinDAO;
+import projet_final.dao.ClasseDAO;
+import projet_final.dao.DAO;
+import projet_final.dao.DisciplineDAO;
+import projet_final.dao.EcoleDAO;
+import projet_final.dao.EleveDAO;
 
 /**
  *
- * @author HP
+ * @author nizar
  */
-public class Projet_final {
+public class JavaApplication1 {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-       
+    public static void main(String[] args) throws SQLException, ClassNotFoundException 
+    {
+        JFrame frame = new JFrame ("MyPanel");
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add (new Fenetre(frame));
+        frame.pack();
+        frame.setVisible (true);
+        //frame.getContentPane()
+        frame.getContentPane().add (new Fenetre2(frame));
+        frame.getContentPane().add (new Fenetre3());
+        frame.getContentPane().add (new Fenetre4());
+        frame.getContentPane().add (new Fenetre5());
+        frame.getContentPane().add (new Fenetre6());
+        frame.getContentPane().add (new Fenetre7());
+        frame.getContentPane().add (new Fenetre8());
+        frame.getContentPane().add (new Fenetre9());
+        frame.getContentPane().add (new Fenetre10());
+        frame.getContentPane().add (new Fenetre11());
+        frame.getContentPane().add (new Fenetre12());
+        frame.getContentPane().add (new Fenetre13());
+        frame.getContentPane().add (new Fenetre14());
+        frame.getContentPane().add (new Fenetre15());
+        frame.getContentPane().add (new Fenetre16());
+        frame.getContentPane().add (new Fenetre17());
+        frame.getContentPane().add (new Fenetre18());
+        
         Connexion con = new Connexion("bdd_gestion", "root", "");
         Eleve e = new Eleve(1, "Lauro", "Guilhem" ,1);
         
@@ -73,36 +104,8 @@ public class Projet_final {
                 }
                }
             }
-            
-        }
         
-        
-        
-        
-        //ensdao.create(e);
-        
-        //EleveDAO.load_Eleve(con);
-       // DAO<Enseignant> disdao = new EnseignantDAO(con);
-        
-     
-       
-       
-      /* EleveDAO.load_Eleve(con);
-        for(int i = 0; i<Personne.get_liste_enseignant().size(); ++i)
-            System.out.println(Personne.get_liste_enseignant().get(i).get_nom());
-        
-       ensdao.delete(Personne.get_liste_eleve().get(3));
-        
-        /*Discipline d = new Discipline("Math", 4);
-        
-        
-        
-       
-        DAO<Discipline> disdao = new DisciplineDAO(con);
-        disdao.delete(d);
-      /* DAO<Eval> evaldao = new EvalDAO(con);
-       Eval eval = evaldao.find(1);
-        // TODO code application logic here*/
+      
     }
     
 }
