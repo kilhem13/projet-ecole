@@ -17,6 +17,7 @@ public class Classe {
     private ArrayList<Eleve> eleve_liste = new ArrayList<>();
     private int id;
     private int annee_scolaire;
+    private int ecole_id;
     
     public Classe()
     {
@@ -26,8 +27,9 @@ public class Classe {
         this.annee_scolaire = 0;
     }
     
-     public Classe(int id, String nom, String niveau, int annee)
+     public Classe(int id, String nom, String niveau, int annee, int ecole_id)
     {
+        this.ecole_id = ecole_id;
         this.id = id;
         this.nom = nom;
         this.niveau = niveau;
@@ -58,7 +60,16 @@ public class Classe {
      public int get_annee_scolaire()
      {
          return this.annee_scolaire;
-     } 
+     }
+     public ArrayList<Eleve> get_liste_eleve()
+     {
+         return eleve_liste;
+     }
+     public int get_indice()
+     {
+         return Ecole.get_ecole_list().get(ecole_id).get_classe().indexOf(this);
+         
+     }
 
    
 }
