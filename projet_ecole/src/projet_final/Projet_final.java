@@ -56,11 +56,12 @@ public class Projet_final {
                     for(int it_bul = 0 ; it_bul<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().size(); ++it_bul)
                     {
                         for(int it_disc = 0 ; it_disc<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(it_bul).get_discipline_liste().size(); ++it_disc)
-                        { System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().get(it_disc).get_nom());
-                        for(int it_eval = 0 ; it_eval<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().size(); ++it_eval)
+                        { System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(it_bul).get_discipline_liste().get(it_disc).get_nom());
+                        for(int it_eval = 0 ; it_eval<Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(it_bul).get_discipline_liste().size(); ++it_eval)
                             {
                                 try{
-                                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(0).get_discipline_liste().get(it_disc).get_liste_eval().get(it_eval).getnote());
+                                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(it_bul).get_discipline_liste().get(it_disc).moyenne());
+                                System.out.println(Ecole.get_ecole_list().get(i).get_classe().get(j).get_eleve_list().get(it_eleve).get_bulletin_liste().get(it_bul).moyenne());
                                 }
                                 catch(Exception ex)
                                     {
