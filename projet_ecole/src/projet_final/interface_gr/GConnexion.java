@@ -134,6 +134,8 @@ public class GConnexion extends javax.swing.JFrame {
     private void BConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConnexionActionPerformed
         try {
             Connexion c= new Connexion(TBdd.getText(),TLogin.getText(),TMdp.getText());
+            Gecoles fenetre= new Gecoles();
+            fenetre.setVisible(true);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(GConnexion.class.getName()).log(Level.SEVERE, null, ex);
         }
