@@ -102,7 +102,7 @@ public class DisciplineDAO extends DAO<Discipline> {
             for (int i = 0; i < res.length; ++i) {
                 System.out.println(res[i]);
             }
-            Discipline d = new Discipline(res[0], 0);
+           // Discipline d = new Discipline(res[0], 0);
 
             /*     if(result.first()){
         ens = new Enseignant(id, result.getString("cls_nom"));

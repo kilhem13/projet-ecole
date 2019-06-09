@@ -37,6 +37,10 @@ package projet_final;
      {
          return note;
      }
+     public String getappreciation()
+     {
+         return appreciation;
+     }
     public double getcoef()
      {
          return coef;

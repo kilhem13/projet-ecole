@@ -49,7 +49,7 @@ public class EvalDAO extends DAO<Eval> {
            String[] res = result.get(0).split(",");
            for(int i = 0; i<res.length; ++i)
             System.out.println(res[i]);
-           Eval e = new Eval( parseInt(res[0]), parseDouble(res[2]), res[1]);
+          // Eval e = new Eval( parseInt(res[0]), parseDouble(res[2]), res[1]);
            
            
            /*     if(result.first()){

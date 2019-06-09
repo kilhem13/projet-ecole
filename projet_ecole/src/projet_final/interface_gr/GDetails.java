@@ -6,26 +6,25 @@
 package projet_final.interface_gr;
 
 import projet_final.Bulletin;
-import projet_final.Eleve;
+import projet_final.Discipline;
 
 /**
  *
  * @author sarto
  */
-public class GBulletins extends javax.swing.JFrame {
+public class GDetails extends javax.swing.JFrame {
 
     /**
-     * Creates new form GBulletins
+     * Creates new form GDetails
      */
-    private Eleve eleve;
-    public GBulletins() {
+    private Bulletin bulletin;
+    public GDetails() {
         initComponents();
     }
-    public GBulletins(Eleve e) {
-        this.eleve=e;
+    public GDetails(Bulletin b) {
+        this.bulletin=b;
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,15 +43,20 @@ public class GBulletins extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Bulletins de \"nom éleve\"");
-        jLabel1.setText("Bulletins de"+eleve.get_prenom()+" "+eleve.get_nom());
+        jLabel1.setText("Details de bulletin \"num\"");
+        jLabel1.setText("Details de bulletins "+ bulletin.get_numero());
 
         jButton4.setText("<-RETOUR");
 
-        for(int i=0;i<eleve.get_bulletin_liste().size();i++)
+        for(int i=0;i<bulletin.get_discipline_liste().size();i++)
         {
-            jComboBox1.addItem("Trimestre :"+ eleve.get_bulletin_liste().get(i).get_numero() +" Appreciation :"+ eleve.get_bulletin_liste().get(i).get_appreciation());
+            jComboBox1.addItem(bulletin.get_discipline_liste().get(i).get_nom()+" "+bulletin.get_discipline_liste().get(i).moyenne()+ "/20" );
         }
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         BExplorer.setText("Explorer");
         BExplorer.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +78,7 @@ public class GBulletins extends javax.swing.JFrame {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(101, 101, 101)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(214, Short.MAX_VALUE))
+                        .addContainerGap(112, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -85,7 +89,7 @@ public class GBulletins extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(125, 125, 125)))
-                        .addGap(291, 291, 291))))
+                        .addGap(394, 394, 394))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +100,7 @@ public class GBulletins extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addComponent(BExplorer, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,15 +111,19 @@ public class GBulletins extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BExplorerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExplorerActionPerformed
-        Bulletin b = null;
-        for(int i=0;i<eleve.get_bulletin_liste().size();i++)
+        Discipline d = null;
+        for(int i=0;i<bulletin.get_discipline_liste().size();i++)
         {
-            if(("Trimestre :"+ eleve.get_bulletin_liste().get(i).get_numero() +" Appreciation :"+ eleve.get_bulletin_liste().get(i).get_appreciation()).equals(jComboBox1.getSelectedItem().toString()) )
-            b=eleve.get_bulletin_liste().get(i);
+            if((bulletin.get_discipline_liste().get(i).get_nom()+" "+bulletin.get_discipline_liste().get(i).moyenne()+ "/20").equals(jComboBox1.getSelectedItem().toString()) )
+            d=bulletin.get_discipline_liste().get(i);
         }
-        GDetails fenetre= new GDetails(b);
+        GEvals fenetre= new GEvals(d);
         fenetre.setVisible(true);
     }//GEN-LAST:event_BExplorerActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,20 +142,20 @@ public class GBulletins extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GBulletins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GBulletins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GBulletins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GBulletins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GBulletins().setVisible(true);
+                new GDetails().setVisible(true);
             }
         });
     }
