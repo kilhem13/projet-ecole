@@ -13,5 +13,18 @@ public class Date {
     private int jour;
     private int mois;
     private int annee;
+    
+    public Date(int jour,int mois,int annee)
+    {
+        this.jour=jour;
+        this.annee=annee;
+        this.mois=mois;
+    }
+
+    Date() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
+
+

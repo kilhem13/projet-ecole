@@ -117,13 +117,26 @@ public class EleveDAO extends DAO<Eleve> {
              for(int i=0; i<Eleve.get_liste_eleve().size(); i++)
              {
                 ArrayList<String> result;
-                result = connect.remplirChampsRequete("SELECT * FROM bulletin WHERE inscription_id = (SELECT inscription.id FROM inscription where personne_id  = "+Eleve.get_liste_eleve().get(i).get_id()+");");
-                System.out.println(result.size());
+                result = connect.remplirChampsRequete("SELECT bulletin.id, bulletin.appreciation,trimestre.numero FROM inscription, bulletin ,trimestre WHERE trimestre.id=bulletin.trimestre_id AND bulletin.inscription_id=inscription.id and inscription.personne_id="+Eleve.get_liste_eleve().get(i).get_id());
+                System.out.println("taillebulletin "+result.size());
                 
                 for(int j=0;j<result.size();j++)
                 {
+                    String res_parse = "";
                     String[] res = result.get(j).split(",");
-                    Bulletin b = new Bulletin(parseInt(res[0]), res[1]);
+                    System.out.println("taillerequette "+res.length);
+                    for(int indice_char = 0; indice_char < res.length; ++indice_char)
+                              {
+                                  String b = "" + res[2].charAt(indice_char);
+                                  if(!b.equals("\n"))
+                                  {
+                                  res_parse = res_parse + res[2].charAt(indice_char);
+                                }
+                                  else
+                                      break;
+                              }
+                    System.out.println("test : '"+ res[2]+"'");
+                    Bulletin b = new Bulletin(parseInt(res[0]), res[1],parseInt(res_parse));
                     Eleve.get_liste_eleve().get(i).add_bulletin(b);
                 }
              }
