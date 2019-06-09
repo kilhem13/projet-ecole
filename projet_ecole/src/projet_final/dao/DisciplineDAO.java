@@ -31,8 +31,9 @@ public class DisciplineDAO extends DAO<Discipline> {
     @Override
     public boolean create(Discipline obj) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String requette_id = "";
 
-        String req = "INSERT INTO `discipline` (`ID`, `NOM`) VALUES (NULL, '" + obj.get_nom() + "');";
+        String req = "INSERT INTO `discipline` (`ID`, `NOM`) VALUES (SELECT MAX(id)+1 FROM ecole WHERE 1, '" + obj.get_nom() + "');";
         try {
             connect.executeUpdate(req);
             System.out.println("Inserted");

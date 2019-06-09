@@ -20,7 +20,7 @@ public class Projet_final {
      */
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
        
-        Connexion con = new Connexion("bdd_gestion", "root", "");
+        Connexion con = new Connexion("bdd_gestion", "root", "radiateur");
         Eleve e = new Eleve(1, "Lauro", "Guilhem" ,1);
         
         

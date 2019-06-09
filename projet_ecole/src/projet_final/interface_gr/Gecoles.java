@@ -5,8 +5,12 @@
  */
 package projet_final.interface_gr;
 
+import static java.lang.Integer.parseInt;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import projet_final.Connexion;
 import projet_final.Ecole;
@@ -157,6 +161,23 @@ public class Gecoles extends javax.swing.JFrame {
     }//GEN-LAST:event_BExplorerActionPerformed
 
     private void BAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAddActionPerformed
+       String name =  TNom.getText();
+       String requette = "INSERT INTO ecole(id, nom) VALUES ( NULL, '"+name+"')";
+        try {
+            this.c.executeUpdate(requette);
+        } catch (SQLException ex) {
+            Logger.getLogger(Gecoles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       requette = "SELECT * FROM ecole WHERE name = '"+name+"'";
+        try {
+            ArrayList<String>  result = this.c.remplirChampsRequete(requette);
+            String[] res = result.get(0).split(",");
+            Ecole.add_ec_to_array(new Ecole(parseInt(res[0]), name));
+        } catch (SQLException ex) {
+            Logger.getLogger(Gecoles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+     
         // TODO add your handling code here:
     }//GEN-LAST:event_BAddActionPerformed
 
