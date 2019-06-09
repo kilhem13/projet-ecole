@@ -174,7 +174,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(int i=0;i&lt;ecole.get_classe().size();i++)&#xa;        {&#xa;           jComboBox1.addItem(ecole.get_classe().get(i).get_nom()+ ecole.get_classe().get(i).get_annee_scolaire());&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(int i=0;i&lt;ecole.get_classe().size();i++)&#xa;        {&#xa;           jComboBox1.addItem(ecole.get_classe().get(i).get_nom()+&quot; &quot;+ ecole.get_classe().get(i).get_annee_scolaire());&#xa;        }"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>

@@ -69,7 +69,7 @@ public class GClasses extends javax.swing.JFrame {
 
         for(int i=0;i<ecole.get_classe().size();i++)
         {
-            jComboBox1.addItem(ecole.get_classe().get(i).get_nom()+ ecole.get_classe().get(i).get_annee_scolaire());
+            jComboBox1.addItem(ecole.get_classe().get(i).get_nom()+" "+ ecole.get_classe().get(i).get_annee_scolaire());
         }
 
         jButton2.setText("Supprimer");
