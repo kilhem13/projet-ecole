@@ -15,11 +15,13 @@ public class Bulletin {
     private int id;
     private String appreciation;
     private ArrayList<Discipline> discipline_liste = new ArrayList<>();
-    
-    public Bulletin(int id, String appreciation)
+    private Trimestre trimestre;
+    private int numero;
+    public Bulletin(int id, String appreciation,int numero)
     {
         this.id = id;
         this.appreciation = appreciation;
+        this.numero=numero;
     }
     public double moyenne()
     {
@@ -39,6 +41,10 @@ public class Bulletin {
     public ArrayList<Discipline> get_discipline_liste()
     {
         return discipline_liste;
+    }
+    public int get_numero()
+    {
+        return numero;
     }
     public void add_discipline(Discipline d)
     {
