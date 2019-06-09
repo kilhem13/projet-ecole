@@ -51,7 +51,7 @@ public class JavaApplication1 {
         frame.getContentPane().add (new Fenetre17());
         frame.getContentPane().add (new Fenetre18());
         
-        Connexion con = new Connexion("bdd_gestion", "root", "radiateur");
+        Connexion con = new Connexion("bdd_gestion", "root", "");
         Eleve e = new Eleve(1, "Lauro", "Guilhem" ,1);
         
         
