@@ -73,7 +73,7 @@ public class EcoleDAO extends DAO<Ecole> {
      
     
     }
-    public static void load_Classe(Connexion connect, int id) throws SQLException
+    public static void load_Classe(Connexion connect) throws SQLException
     {
         for(int i = 0; i<Ecole.get_ecole_list().size(); ++i)
         {

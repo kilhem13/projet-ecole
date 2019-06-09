@@ -9,6 +9,13 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import projet_final.Connexion;
+import projet_final.Ecole;
+import projet_final.dao.BulletinDAO;
+import projet_final.dao.ClasseDAO;
+import projet_final.dao.DAO;
+import projet_final.dao.DisciplineDAO;
+import projet_final.dao.EcoleDAO;
+import projet_final.dao.EleveDAO;
 
 /**
  *
@@ -32,6 +39,7 @@ public class GConnexion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
         BConnexion = new javax.swing.JButton();
         TLogin = new javax.swing.JTextField();
         TBdd = new javax.swing.JTextField();
@@ -134,7 +142,14 @@ public class GConnexion extends javax.swing.JFrame {
     private void BConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConnexionActionPerformed
         try {
             Connexion c= new Connexion(TBdd.getText(),TLogin.getText(),TMdp.getText());
-            Gecoles fenetre= new Gecoles();
+            EcoleDAO.load_Ecole(c);
+            EcoleDAO.load_Classe(c);
+            EleveDAO.load_Eleve(c);
+            ClasseDAO.load_eleve_in_classe(c);
+            EleveDAO.load_Bulletin(c);
+            BulletinDAO.load_Discipline(c);
+            DisciplineDAO.load_liste_eval(c);
+            Gecoles fenetre= new Gecoles(c);
             fenetre.setVisible(true);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(GConnexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -186,6 +201,7 @@ public class GConnexion extends javax.swing.JFrame {
     private javax.swing.JTextField TBdd;
     private javax.swing.JTextField TLogin;
     private javax.swing.JTextField TMdp;
+    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

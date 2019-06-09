@@ -13,6 +13,10 @@ import java.util.ArrayList;
  */
 public class Ecole {
     private static ArrayList<Ecole> ecole_list = new ArrayList<>();
+
+    public static Object get_ecole_list(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private int id;
     private String nom;
     private ArrayList<Classe> classe_liste = new ArrayList<>();
