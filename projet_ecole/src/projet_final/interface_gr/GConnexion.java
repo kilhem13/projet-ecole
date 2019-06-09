@@ -65,9 +65,8 @@ public class GConnexion extends javax.swing.JFrame {
             }
         });
 
-        TBdd.setText("bdd_college");
+        TBdd.setText("bdd_gestion");
 
-        TMdp.setText("JavaCool75");
         TMdp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TMdpActionPerformed(evt);

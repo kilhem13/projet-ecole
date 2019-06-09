@@ -105,13 +105,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="TBdd">
       <Properties>
-        <Property name="text" type="java.lang.String" value="bdd_college"/>
+        <Property name="text" type="java.lang.String" value="bdd_gestion"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TMdp">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="JavaCool75"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TMdpActionPerformed"/>
       </Events>

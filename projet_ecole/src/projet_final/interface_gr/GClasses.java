@@ -5,6 +5,7 @@
  */
 package projet_final.interface_gr;
 
+import projet_final.Classe;
 import projet_final.Ecole;
 
 /**
@@ -43,7 +44,7 @@ public class GClasses extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        BExplorer = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -66,6 +67,11 @@ public class GClasses extends javax.swing.JFrame {
             }
         });
 
+        for(int i=0;i<ecole.get_classe().size();i++)
+        {
+            jComboBox1.addItem(ecole.get_classe().get(i).get_nom()+ ecole.get_classe().get(i).get_annee_scolaire());
+        }
+
         jButton2.setText("Supprimer");
 
         jButton3.setText("Nouveau type");
@@ -81,7 +87,12 @@ public class GClasses extends javax.swing.JFrame {
 
         jLabel2.setText("Nom");
 
-        jButton5.setText("Explorer");
+        BExplorer.setText("Explorer");
+        BExplorer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BExplorerActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Ajout niveau");
@@ -112,7 +123,7 @@ public class GClasses extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BExplorer, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +186,7 @@ public class GClasses extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BExplorer, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83))
@@ -214,6 +225,17 @@ public class GClasses extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void BExplorerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExplorerActionPerformed
+        Classe c = null;
+        for(int i=0;i<Ecole.get_ecole_list().size();i++)
+        {
+            if(Ecole.get_ecole_list().get(i).get_nom().equals(jComboBox1.getSelectedItem().toString()))
+                e=Ecole.get_ecole_list().get(i);
+        }
+        GClasses fenetre= new GClasses(e);
+        fenetre.setVisible(true);
+    }//GEN-LAST:event_BExplorerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,11 +272,11 @@ public class GClasses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BExplorer;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

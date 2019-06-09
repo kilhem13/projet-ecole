@@ -28,7 +28,7 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jComboBox1" min="-2" pref="149" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton5" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                      <Component id="BExplorer" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -114,7 +114,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jButton3" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace pref="52" max="32767" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="BExplorer" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
@@ -174,6 +174,7 @@
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(int i=0;i&lt;ecole.get_classe().size();i++)&#xa;        {&#xa;           jComboBox1.addItem(ecole.get_classe().get(i).get_nom()+ ecole.get_classe().get(i).get_annee_scolaire());&#xa;        }"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
@@ -205,10 +206,13 @@
         <Property name="text" type="java.lang.String" value="Nom"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="BExplorer">
       <Properties>
         <Property name="text" type="java.lang.String" value="Explorer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BExplorerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
