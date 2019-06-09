@@ -135,6 +135,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="&#xa;        &#xa;        for(int i=0;i&lt;Ecole.get_ecole_list().size();i++)&#xa;        {&#xa;           jComboBox1.addItem(Ecole.get_ecole_list().get(i).get_nom());&#xa;        }&#xa;"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

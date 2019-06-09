@@ -98,6 +98,11 @@ public class Gecoles extends javax.swing.JFrame {
         {
             jComboBox1.addItem(Ecole.get_ecole_list().get(i).get_nom());
         }
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,27 +167,62 @@ public class Gecoles extends javax.swing.JFrame {
 
     private void BAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAddActionPerformed
        String name =  TNom.getText();
-       String requette = "INSERT INTO ecole(id, nom) VALUES ( NULL, '"+name+"')";
+       String requette_id = "SELECT MAX(id)+1, nom FROM ecole WHERE 1";
+       ArrayList<String> result_id;
         try {
+            result_id = this.c.remplirChampsRequete(requette_id);
+            String[] res_id = result_id.get(0).split(",");
+       String requette = "INSERT INTO ecole(id, nom) VALUES ("+parseInt(res_id[0])+", '"+name+"')";
+       try {
             this.c.executeUpdate(requette);
         } catch (SQLException ex) {
             Logger.getLogger(Gecoles.class.getName()).log(Level.SEVERE, null, ex);
         }
-       requette = "SELECT * FROM ecole WHERE name = '"+name+"'";
-        try {
-            ArrayList<String>  result = this.c.remplirChampsRequete(requette);
-            String[] res = result.get(0).split(",");
-            Ecole.add_ec_to_array(new Ecole(parseInt(res[0]), name));
+      
+            Ecole.add_ec_to_array(new Ecole(parseInt(res_id[0]), name));
+            this.initComponents();
         } catch (SQLException ex) {
             Logger.getLogger(Gecoles.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+        
+        
         
      
         // TODO add your handling code here:
     }//GEN-LAST:event_BAddActionPerformed
 
     private void BsupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsupActionPerformed
-        // TODO add your handling code here:
+        
+        int idex = jComboBox1.getSelectedIndex();
+        String value = jComboBox1.getSelectedItem().toString();
+        String res_parse = "";
+        for(int indice_char = 0; indice_char < value.length(); ++indice_char)
+                                  {
+                                      String b = "" + value.charAt(indice_char);
+                                      if(!b.equals("\n"))
+                                      {
+                                      res_parse = res_parse + value.charAt(indice_char);
+                                    }
+                                      else
+                                          break;
+                                  }
+        
+        for(int i = 0; i<Ecole.get_ecole_list().size(); ++i)
+            {  
+                if(Ecole.get_ecole_list().get(i).get_nom().equals(res_parse));
+                idex = Ecole.get_ecole_list().get(i).get_id();
+            }
+        res_parse = res_parse + "'";
+        String requette = "DELETE FROM ecole WHERE id = "+idex;
+        try {
+            c.executeUpdate(requette);
+        } catch (SQLException ex) {
+            Logger.getLogger(Gecoles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    int i = 0;
+        
+        
     }//GEN-LAST:event_BsupActionPerformed
 
     private void TNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNomActionPerformed
@@ -192,6 +232,10 @@ public class Gecoles extends javax.swing.JFrame {
     private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BRetourActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
